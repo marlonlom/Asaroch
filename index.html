@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>ATLAS-ESTADISTICO-mobile-1.0</title>
+        <meta name="description" content="Atlas Estad&iacute;stico mobile">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!--styles-->
+        <link href=css/styles.css rel=stylesheet>
+        <!--scripts-->
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="libs/zepto.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="libs/zepto.detect.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="libs/zepto.touch.js"></script>
+        <script type="text/javascript" charset="utf-8" src="libs/fastclick.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="libs/iscroll-lite.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="libs/handlebars.js"></script>
+        <script type="text/javascript" charset="utf-8" src="data/atlesm.data.js"></script>
+        <script type="text/javascript" charset="utf-8" src="libs/atlesm.app.js"></script>
+        <script>
+            function onBodyLoad() {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+            function onDeviceReady() {
+                if (window.navigator && window.navigator.splashscreen) {
+                    setTimeout(function() {
+                        window.navigator.splashscreen.hide();
+                    }, 1000);
+                }
+                document.addEventListener("backbutton", onBackKeyDown, false);
+                document.addEventListener("online", function(e) {
+                    atles.isOnline = true;
+                }, false);
+                document.addEventListener("offline", function(e) {
+                    atles.isOnline = false;
+                }, false);
+            }
+        
+            function closeAppConfirm(btn) {
+                if (btn === 1) {
+                   navigator.app.exitApp() ;
+                }else{
+                   atles.prepareMainView(); 
+                }
+            }
+        
+            function onBackKeyDown() { 
+                if (navigator.notification) {
+                    navigator.notification.confirm('Salir de la aplicación?', closeAppConfirm, 'Saliendo', 'Salir,Cancelar'); 
+                }
+            }
+            
+            if (!$) {
+                $ = Zepto;
+            };
+            
+            $(function($) {
+                atles.initialize();
+                atles.prepareMainView();
+                document.addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                }, false);
+                atles.iscroll = new iScroll('wrapper');
+            })
+        </script>
+    </head>
+    
+    <body onload="onBodyLoad()">
+        <script id="hbt-home" type="text/x-handlebars-template">
+            <header id="header">
+                <img src="img/dane.header.01.png" class="danelogo1">
+                <h5 class="title">Atlas Estad&iacute;stico</h5>
+                <img src="img/dane.header.02.png" class="danelogo2">
+            </header>
+            <div id="wrapper">
+                <div id="scroller">
+                    <ul class='home-list'>
+                        {{#each menu}}
+                        <li class="menu-li home-menu-item{{#if bgstyle}} {{bgstyle}}{{/if}}">
+                            <a href="#" data-home-link="{{cod}}" class="categ-link">{{nom}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <footer id="footer">
+                <div class="footer-container"></div>
+            </footer>
+        </script>
+    </body>
+</html>
