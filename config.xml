@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="gov.dane.sige.phonegap.indicadores" version="1.0.0">
-    <name>ATLAS ESTADÍSTICO Mobile</name>
+    <name>ATLAS Mobile</name>
     <description>Phonegap Application for Atlas Estadístico content information visualization</description>
     <author href="http://www.dane.gov.co" email="sige@dane.gov.co">SIGE</author>
     <!-- Some features-->
@@ -39,6 +39,8 @@
     <gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
     <gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
     <gap:splash src="splash/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+    <!--Splash Screen (ios)-->
+    <gap:splash src="splash/ios/default.png" gap:platform="ios" width="320" height="480" />
     <!-- Access (Default)-->
     <access origin="*" />
     <access origin="http://127.0.0.1*" browserOnly="true" />

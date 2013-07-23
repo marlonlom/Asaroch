@@ -91,13 +91,6 @@ li.menu-li {
     min-height: 30px;
     clear: both;
 }
-li.inner-li {
-    line-height:14px;
-    margin-bottom: 10px;
-}
-span.tip_bog {
-    font-size:11px !important;
-}
 img.vmap-icon {
     float:right;
 }
@@ -131,6 +124,13 @@ li.tome01-itm a,li.tome02-itm a,li.tome03-itm a{
     color:#000000 !important;
     font-weight:bold;
 }
+li.tome-itm{background-color:#CFCFCF;}
+li.tome-itm span{float: left;
+    font-size: 11px;
+    width: 85%;
+    color:#000000;
+}
+
 #footer {
     position:absolute;
     z-index:2;
