@@ -78,7 +78,7 @@
                 <div id="scroller">
                     <ul class='home-list'>
                         {{#each menu}}
-                        <li class="menu-li home-menu-item">
+                        <li class="menu-li home-menu-item{{#if bgstyle}} {{bgstyle}}{{/if}}">
                             <a href="#" data-home-link="{{cod}}" class="categ-link">{{nom}}</a>
                         </li>
                         {{/each}}
@@ -87,43 +87,6 @@
             </div>
             <footer id="footer">
                 <div class="footer-container"></div>
-            </footer>
-        </script>
-        <script id="hbt-tomes-list" type="text/x-handlebars-template">
-            <header id="header">
-                <img src="img/dane.header.01.png" class="danelogo1">
-                <h5 class="title">Atlas Estad&iacute;stico</h5>
-                <img src="img/dane.header.02.png" class="danelogo2">
-            </header>
-            <div id="wrapper">
-                <div id="scroller">
-                    <ul class='home-list'>
-                        <li class="menu-li home-li-tip">
-                            <span>{{tomeName}}</span>
-                            <input id="tome_key" name="tome_key" value="{{tomekey}}" type="hidden">
-                        </li>
-                        {{#each list}}
-                        <li data-tome-ref="{{cod}}" class="menu-li tome-itm {{#if root}}leaf leaf-{{root}}{{/if}}">
-                            <span data-tome-docref="{{cod}}"{{#if root}} data-tome-docroot="{{root}}"{{/if}}>{{title}}</span>
-                            {{#if haveLink}}
-                            <img data-tome-doc-link="{{cod}}" src="img/icon-viewpage.png" style="float:right;">
-                            {{/if}}
-                        </li>
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-            <footer id="footer">
-                <div class="footer-container">
-                    <div class="footer-btn back-home-icon">
-                        <img src="img/icon-home.png">
-                        Inicio
-                    </div>
-                    <div class="footer-btn back-prev-icon">
-                        <img src="img/icon-back.png">
-                        Anterior
-                    </div>
-                </div>
             </footer>
         </script>
     </body>
