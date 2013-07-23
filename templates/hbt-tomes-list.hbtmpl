@@ -1,19 +1,21 @@
 <header id="header">
     <img src="img/dane.header.01.png" class="danelogo1">
-    <h5 class="title">INDICADORES</h5>
+    <h5 class="title">Atlas Estad&iacute;stico</h5>
     <img src="img/dane.header.02.png" class="danelogo2">
 </header>
 <div id="wrapper">
     <div id="scroller">
-        <input type="hidden" id="prev-page" name="prev-page" value="home">
-        <ul class='deptos-list'>
+        <ul class='home-list'>
             <li class="menu-li home-li-tip">
-                <span>Categor&iacute;a:&nbsp;{{categoryName}}</span>
+                <span>{{tomeName}}</span>
+                <input id="tome_key" name="tome_key" value="{{tomekey}}" type="hidden">
             </li>
             {{#each list}}
-            <li class="menu-li item-li">
-                <a href="#" class="itm-nom" data-itm-cod="{{cod}}">{{nom}}</a>
-                <img src="img/map.png" data-itm-cod="{{cod}}" class="vmap-icon" />
+            <li data-tome-ref="{{cod}}" class="menu-li tome-itm {{#if root}}leaf leaf-{{root}}{{/if}}">
+                <span data-tome-docref="{{cod}}"{{#if root}} data-tome-docroot="{{root}}"{{/if}}>{{title}}</span>
+                {{#if haveLink}}
+                <img data-tome-doc-link="{{cod}}" src="img/icon-viewpage.png" style="float:right;">
+                {{/if}}
             </li>
             {{/each}}
         </ul>
