@@ -7,6 +7,9 @@ var atles = {
 atles.initialize = function () {
     this.templates.home = Handlebars.compile($("#hbt-home").html());
     this.templates.tomeContents = Handlebars.compile($("#hbt-tomes-list").html());
+    this.templates.singleDocs = Handlebars.compile($("#hbt-single-docview").html());
+    this.templates.mapdocsList = Handlebars.compile($("#hbt-maps-doclist").html());
+    this.templates.mapdocsItems = Handlebars.compile($("#hbt-tome-mapdocs-listitems").html());
 };
 atles.isOffline = function () {
     var connectionType = navigator.connection ? navigator.connection.type : null;
@@ -61,11 +64,62 @@ atles.prepareMainView = function () {
         if (hash.indexOf('tome') === 0) {
             atles.showTomeContentsListView(hash);
         }
-        if (hash.indexOf('welcome') === 0) {
-            alert(hash);
+        if (hash === 'welcome') {
+            atles.showWelcomeNoteView();
+        }
+        if (hash === 'mapslist') {
+            atles.showMapdocsListView();
         }
     });
     atles.handleDANEWebpageAccess();
+};
+atles.showWelcomeNoteView = function(){
+    $('body').off(atles.toggleClickEvent());
+    atles.atHome = false;
+    $('body').html(this.templates.singleDocs());
+    $('.document-content').load('/pages/welcome.html',function(data, status, xhr){ 
+        atles.prepareCommonPageBehaviour();
+    });
+    $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
+        e.preventDefault();
+        atles.atHome = true;
+        atles.prepareMainView();
+    }).on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
+        e.preventDefault();
+        atles.atHome = true;
+        atles.prepareMainView();
+    });
+};
+atles.showMapdocsListView = function(){
+    $('body').off(atles.toggleClickEvent());
+    atles.atHome = false;
+    $('body').html(this.templates.mapdocsList());
+    $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
+        e.preventDefault();
+        atles.atHome = true;
+        atles.prepareMainView();
+    }).on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
+        e.preventDefault();
+        atles.atHome = true;
+        atles.prepareMainView();
+    }).on(atles.toggleClickEvent(), '.tome-menutab', function (e) {
+        e.preventDefault();
+        var tome_ref = $(this).attr('data-tomeref') || 'nah';
+        if(tome_ref !== 'nah'){
+            atles.showTomeMapsListingView(tome_ref);
+        }
+    });
+    atles.showTomeMapsListingView('tome01');
+};
+atles.showTomeMapsListingView = function(tome_key){
+    $('.tome-menutab').css('font-weight', 'normal').css('color','#1D1D1D').css('background','#dddddd');
+    $('.tome-menutab[data-tomeref='+tome_key+']').css('font-weight', 'bold').css('color','#B6014C').css('background','#d1d1d1');
+    
+    var tomeMaps = $.grep(data.mapsList, function (item, index) {
+        return item['tome'] === tome_key;
+    });
+    $('div.maplist-tabcontents').html(this.templates.mapdocsItems({list:tomeMaps}));    
+    atles.prepareCommonPageBehaviour();
 };
 atles.showTomeContentsListView = function (hash) {
     $('body').off(atles.toggleClickEvent());
@@ -100,25 +154,35 @@ atles.showTomeContentsListView = function (hash) {
         var docroot = $(this).attr('data-tome-docroot') || 'nah';
         var docref = $(this).attr('data-tome-docref');
         $('li.leaf').hide();
+        $('li span').css('color','#000000');
         if (docroot !== 'nah') {
             if (docroot.indexOf('/')>0){
                 $('li.leaf.leaf-' + docroot.split('/')[0]).show();
+                $('span[data-tome-docref='+docroot.split('/')[0]+']').css('color','#B92859');
                 $('li.leaf').filter(function (index, item) {
                     var claz = $(this).attr('class');
                     return claz.indexOf(docroot) >= 0;
                 }).show();
+                $('span[data-tome-docref='+docroot.split('/')[1]+']').css('color','#B92859');
             }else{
                 var otkn = docroot.concat('/').concat(docref);
                 $('li.leaf.leaf-' + docroot).show();
+                $('span[data-tome-docref='+docroot+']').css('color','#B92859');
                 $('li.leaf').filter(function (index, item) {
                     var claz = $(this).attr('class');
                     return claz.indexOf(otkn) >= 0;
                 }).show();
+                $('span[data-tome-docref='+docref+']').css('color','#B92859');
             }
         } else {
             $('li.leaf.leaf-' + docref).show();
+            $('span[data-tome-docref='+docref+']').css('color','#B92859');
         }
         atles.prepareCommonPageBehaviour();
+    }).on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
+        var docref = $(this).attr('data-tome-doc-link');
+        /*atles.showAlert('documento: '+docref,'documento');*/
+        atles.showAlert('contenido ','documento');
     }).on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
         e.preventDefault();
         atles.atHome = true;

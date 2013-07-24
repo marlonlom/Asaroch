@@ -106,7 +106,7 @@
                         <li data-tome-ref="{{cod}}" class="menu-li tome-itm {{#if root}}leaf leaf-{{root}}{{/if}}">
                             <span data-tome-docref="{{cod}}"{{#if root}} data-tome-docroot="{{root}}"{{/if}}>{{title}}</span>
                             {{#if haveLink}}
-                            <img data-tome-doc-link="{{cod}}" src="img/icon-viewpage.png" style="float:right;">
+                            <img class="img-viewdoc" data-tome-doc-link="{{cod}}" src="img/icon-viewpage.png" style="float:right;">
                             <div style="clear:both"></div>
                             {{/if}}
                         </li>
@@ -116,10 +116,69 @@
             </div>
             <footer id="footer">
                 <div class="footer-container">
-                    <div class="footer-btn back-home-icon">
-                        <img src="img/icon-home.png">
-                        Inicio
+                    <div class="footer-btn back-prev-icon">
+                        <img src="img/icon-back.png">
+                        Anterior
                     </div>
+                </div>
+            </footer>
+        </script>
+        <script id="hbt-single-docview" type="text/x-handlebars-template">
+            <header id="header">
+                <img src="img/dane.header.01.png" class="danelogo1">
+                <h5 class="title">Atlas Estad&iacute;stico</h5>
+                <img src="img/dane.header.02.png" class="danelogo2">
+            </header>
+            <div id="wrapper">
+                <div id="scroller">
+                    <div class="document-titlebox"></div>
+                    <div class="document-content"></div>
+                </div>
+            </div>
+            <footer id="footer">
+                <div class="footer-container">
+                    <div class="footer-btn back-prev-icon">
+                        <img src="img/icon-back.png">
+                        Anterior
+                    </div>
+                </div>
+            </footer>
+        </script>
+        <script id="hbt-tome-mapdocs-listitems" type="text/x-handlebars-template">
+            <ul class='home-list'>
+                {{#each list}}
+                <li class="menu-li tome-itm tome-mapdoc-itm">
+                    <span data-tome-mapurl="{{url}}" data-tome-mapcode="{{cod}}">{{title}}</span>
+                </li>
+                {{/each}}
+            </ul>
+        </script>
+        <script id="hbt-maps-doclist" type="text/x-handlebars-template">
+            <header id="header">
+                <img src="img/dane.header.01.png" class="danelogo1">
+                <h5 class="title">Atlas Estad&iacute;stico</h5>
+                <img src="img/dane.header.02.png" class="danelogo2">
+            </header>
+            <div id="wrapper">
+                <div id="scroller">
+                    <div class="document-titlebox">
+                        <b class="maplist-title">Listado de Mapas</b>
+                    </div>
+                    <div class="document-content">
+                        <div class="maplist-tabs">
+                            <div data-tomeref="tome01" class="tome-menutab">Tomo I:<br/>Demogr&aacute;fico</div>
+                            <div data-tomeref="tome02" class="tome-menutab">Tomo II:<br/>Social</div>
+                            <div data-tomeref="tome03" class="tome-menutab">Tomo III:<br/>Econ&oacute;mico</div>
+                            <div style="clear:both"></div>
+                        </div>
+                        <div class="maplist-tabcontents">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer id="footer">
+                <div class="footer-container">
                     <div class="footer-btn back-prev-icon">
                         <img src="img/icon-back.png">
                         Anterior
