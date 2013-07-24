@@ -77,7 +77,7 @@ atles.showWelcomeNoteView = function(){
     $('body').off(atles.toggleClickEvent());
     atles.atHome = false;
     $('body').html(this.templates.singleDocs());
-    $('.document-content').load('/pages/welcome.html',function(data, status, xhr){ 
+    $('.document-content').load('pages/welcome.html',function(data, status, xhr){ 
         atles.prepareCommonPageBehaviour();
     });
     $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
