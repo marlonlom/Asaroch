@@ -180,13 +180,28 @@ atles.showTomeContentsListView = function (hash) {
         }
         atles.prepareCommonPageBehaviour();
     }).on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
-        var docref = $(this).attr('data-tome-doc-link');
-        /*atles.showAlert('documento: '+docref,'documento');*/
-        atles.showAlert('contenido ','documento');
+        var docref = $(this).attr('data-tome-doc-link') || 'nah' ;
+        if(docref !== 'nah'){
+            var tome_ref = $(this).attr('data-tome-src');
+            atles.showTomeWebpageView(docref,tome_ref);
+        }
     }).on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
         e.preventDefault();
         atles.atHome = true;
         atles.prepareMainView();
     });
     atles.handleDANEWebpageAccess();
+};
+atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
+    $('body').off(atles.toggleClickEvent());
+    atles.atHome = false;
+    $('body').html(this.templates.singleDocs());
+    $('.document-content').load('pages/'+tome_ref+'/'+tome_content_ref+'.html',function(data, status, xhr){ 
+        atles.prepareCommonPageBehaviour();
+    });
+    $('body').on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
+        e.preventDefault();
+        atles.atHome = true;
+        atles.prepareMainView();
+    });
 };

@@ -105,24 +105,6 @@ a.itm-nom {
     float:left;
     display:block;
 }
-.tome01-itm {
-    background-color:#ED9622;
-    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #ED9622), color-stop(1, #FFC06A)) !important;
-    background-image:-moz-linear-gradient(top, #ED9622, #FFC06A) !important;
-    background-image:-o-linear-gradient(top, #ED9622, #FFC06A) !important;
-}
-.tome02-itm {
-    background-color:#16B7D3;
-    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #16B7D3), color-stop(1, #84EDFF)) !important;
-    background-image:-moz-linear-gradient(top, #16B7D3, #84EDFF) !important;
-    background-image:-o-linear-gradient(top, #16B7D3, #84EDFF) !important;
-}
-.tome03-itm {
-    background-color:#9DAE3B;
-    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #9DAE3B), color-stop(1, #C4D467)) !important;
-    background-image:-moz-linear-gradient(top, #9DAE3B, #C4D467) !important;
-    background-image:-o-linear-gradient(top, #9DAE3B, #C4D467) !important;
-}
 li.tome01-itm a, li.tome02-itm a, li.tome03-itm a {
     color:#000000 !important;
     font-weight:bold;
@@ -170,9 +152,7 @@ li.tome-itm span {
 }
 div.welcome_wrapper {
     font-size: 11px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 5px;
+    padding: 5px 5px 5px 10px;
     width: 92%;
 }
 b.content_title, span.content_body {
@@ -213,4 +193,27 @@ li.tome-mapdoc-itm span {
     width: 95%;
     display: block;
     color:#000000;
+}
+span.map-img-title-header{
+    font-size:10px;
+    margin-top:10px;
+}
+span.map-img-section-header{
+    font-weight:bold;
+    font-size:11px;
+    margin-top:15px;
+    
+}
+span.map-img-footer {
+    font-size: 7px;
+    margin-bottom: 10px;
+    width: 95%;
+}
+span.map-img-title-header b, b.target-title{
+    color: #B92859;
+}
+img.tomecontents-map-img{
+    display:block;
+    width:95%;
+    padding-bottom:5px
 }

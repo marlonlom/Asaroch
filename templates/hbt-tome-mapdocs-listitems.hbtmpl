@@ -1,0 +1,7 @@
+<ul class='home-list'>
+    {{#each list}}
+    <li class="menu-li tome-itm tome-mapdoc-itm">
+        <span data-tome-mapurl="{{url}}" data-tome-mapcode="{{cod}}">{{title}}</span>
+    </li>
+    {{/each}}
+</ul>
