@@ -197,6 +197,12 @@ atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
     atles.atHome = false;
     $('body').html(this.templates.singleDocs());
     $('.document-content').load('pages/'+tome_ref+'/'+tome_content_ref+'.html',function(data, status, xhr){ 
+        $('img.tomecontents-map-img').off('load').on('load',function(){
+            if($(this).attr('complete') === false){
+                $(this).attr('src', $(this).attr('src')+'?'+Math.random());
+            }
+            atles.prepareCommonPageBehaviour();
+        });
         atles.prepareCommonPageBehaviour();
     });
     $('body').on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {

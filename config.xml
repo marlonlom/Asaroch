@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="gov.dane.sige.phonegap.atlasestadistico" version="1.0.0">
-    <name>ATLAS ESTADÍSTICO Mobile</name>
+    <name>ATLAS ESTADISTICO Mobile</name>
     <description>Phonegap Application for Atlas Estadístico content information visualization</description>
     <author href="http://www.dane.gov.co" email="sige@dane.gov.co">SIGE</author>
     <!-- Some features-->
     <feature name="http://api.phonegap.com/1.0/network" />
     <!-- Some preferences-->
     <preference name="phonegap-version" value="2.9.0" />
-    <preference name="orientation" value="portrait" />
+    <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <!-- Some preferences (iOS)-->
