@@ -217,3 +217,23 @@ img.tomecontents-map-img{
     width:95%;
     padding-bottom:5px
 }
+button.download-map-btn {
+    background-color:#e5e5e5;
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #e5e5e5), color-stop(1, #cccccc));
+    background-image:-moz-linear-gradient(top, #e5e5e5, #cccccc);
+    background-image:-o-linear-gradient(top, #e5e5e5, #cccccc);
+    border:1px solid #111;
+    border-radius: 0 0 0 0;
+    font-size: 11px;
+    height: 24px;
+    text-align: right;
+    vertical-align: middle;
+    display:block;
+    width:95%;
+}
+button.download-map-btn img{
+    float:left;
+}
+button.download-map-btn span{
+    float:right;
+}

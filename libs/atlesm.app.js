@@ -207,7 +207,24 @@ atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
     });
     $('body').on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
         e.preventDefault();
-        atles.atHome = true;
-        atles.prepareMainView();
+        atles.atHome = false;
+        atles.showTomeContentsListView(tome_ref);
+    }).on(atles.toggleClickEvent(), '.download-map-btn', function (e) {
+        e.preventDefault();
+        var mapdocref = $(this).attr('data-mapdoc-ref') || 'nah' ;
+        var havelink = false;
+        if(mapdocref !== 'nah'){
+            var mapdocs = $.grep(data.mapsList, function (item, index) {
+                return item['tome'] === tome_key;
+            });
+            havelink = mapdocs !== null && mapdocs.length>0;
+            if(havelink){
+                window.open(mapdocs[0].url, '_system');
+            }else{
+                atles.showAlert('no hay archivo de mapa','descargar mapa');
+            }
+        }else{
+            atles.showAlert('no hay archivo de mapa','descargar mapa');
+        }
     });
 };
