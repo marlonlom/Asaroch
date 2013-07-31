@@ -215,7 +215,7 @@ atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
         var havelink = false;
         if(mapdocref !== 'nah'){
             var mapdocs = $.grep(data.mapsList, function (item, index) {
-                return item['tome'] === tome_key;
+                return item['cod'] === mapdocref;
             });
             havelink = mapdocs !== null && mapdocs.length>0;
             if(havelink){
