@@ -439,13 +439,13 @@ data.tomesList = [{
     cod: 'tm02itm19',
     title: '2.1.1. Tamaño de los hogares en cabecera municipal',
     tome: 'tome02',
-    root: 'tm02itm17/tm02itm19',
+    root: 'tm02itm17/tm02itm18',
     haveLink: true
 }, {
     cod: 'tm02itm20',
     title: '2.1.2. Tamaño de los hogares en resto municipal',
     tome: 'tome02',
-    root: 'tm02itm17/tm02itm19',
+    root: 'tm02itm17/tm02itm18',
     haveLink: true
 }, {
     cod: 'tm02itm21',
