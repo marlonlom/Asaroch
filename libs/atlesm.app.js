@@ -16,7 +16,7 @@ atles.isOffline = function () {
     return connectionType !== null && (connectionType == Connection.NONE || connectionType == Connection.UNKNOWN);
 };
 atles.toggleClickEvent = function () {
-    return $.device.mobile ? 'touchstart' : 'click';
+    return $.device.mobile ? 'touchend' : 'click';
 };
 atles.showAlert = function (message, title) {
     if (navigator.notification) {
@@ -149,7 +149,7 @@ atles.showTomeContentsListView = function (hash) {
         e.preventDefault();
         atles.atHome = true;
         atles.prepareMainView();
-    }).on(atles.toggleClickEvent(), 'li.tome-itm span', function (e) {
+    }).on(atles.toggleClickEvent(), 'li.tome-itm button', function (e) {
         e.preventDefault();
         var docroot = $(this).attr('data-tome-docroot') || 'nah';
         var docref = $(this).attr('data-tome-docref');
@@ -158,25 +158,25 @@ atles.showTomeContentsListView = function (hash) {
         if (docroot !== 'nah') {
             if (docroot.indexOf('/')>0){
                 $('li.leaf.leaf-' + docroot.split('/')[0]).show();
-                $('span[data-tome-docref='+docroot.split('/')[0]+']').css('color','#B92859');
+                $('button[data-tome-docref='+docroot.split('/')[0]+']').css('color','#B92859');
                 $('li.leaf').filter(function (index, item) {
                     var claz = $(this).attr('class');
                     return claz.indexOf(docroot) >= 0;
                 }).show();
-                $('span[data-tome-docref='+docroot.split('/')[1]+']').css('color','#B92859');
+                $('button[data-tome-docref='+docroot.split('/')[1]+']').css('color','#B92859');
             }else{
                 var otkn = docroot.concat('/').concat(docref);
                 $('li.leaf.leaf-' + docroot).show();
-                $('span[data-tome-docref='+docroot+']').css('color','#B92859');
+                $('button[data-tome-docref='+docroot+']').css('color','#B92859');
                 $('li.leaf').filter(function (index, item) {
                     var claz = $(this).attr('class');
                     return claz.indexOf(otkn) >= 0;
                 }).show();
-                $('span[data-tome-docref='+docref+']').css('color','#B92859');
+                $('button[data-tome-docref='+docref+']').css('color','#B92859');
             }
         } else {
             $('li.leaf.leaf-' + docref).show();
-            $('span[data-tome-docref='+docref+']').css('color','#B92859');
+            $('button[data-tome-docref='+docref+']').css('color','#B92859');
         }
         atles.prepareCommonPageBehaviour();
     }).on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
