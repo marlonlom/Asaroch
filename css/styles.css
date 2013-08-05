@@ -188,9 +188,9 @@ li.tome-mapdoc-itm {
     vertical-align: top;
 }
 li.tome-mapdoc-itm span {
-    float: none;
+    float: left;
     font-size: 11px;
-    width: 95%;
+    width: 85%;
     display: block;
     color:#000000;
 }
@@ -248,4 +248,7 @@ button.tome-content-btn{
     padding: 0 0 0 5px;
     text-align: left;
     width: 85%;
+}
+img.img-savemap, img.img-viewdoc {
+    float:right;
 }
