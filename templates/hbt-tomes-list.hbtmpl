@@ -12,9 +12,11 @@
             </li>
             {{#each list}}
             <li data-tome-ref="{{cod}}" class="menu-li tome-itm {{#if root}}leaf leaf-{{root}}{{/if}}">
-                <span data-tome-docref="{{cod}}"{{#if root}} data-tome-docroot="{{root}}"{{/if}}>{{title}}</span>
+                <button class="tome-content-btn" data-tome-docref="{{cod}}"{{#if root}} data-tome-docroot="{{root}}"{{/if}}>
+                    {{title}}
+                </button>
                 {{#if haveLink}}
-                <img data-tome-doc-link="{{cod}}" src="img/icon-viewpage.png" style="float:right;">
+                <img class="img-viewdoc" data-tome-doc-link="{{cod}}" data-tome-src="{{tome}}" src="img/icon-viewpage.png" style="float:right;">
                 <div style="clear:both"></div>
                 {{/if}}
             </li>
@@ -26,7 +28,7 @@
     <div class="footer-container">
         <div class="footer-btn back-prev-icon">
             <img src="img/icon-back.png">
-            Anterior
+            Atr&aacute;s
         </div>
     </div>
 </footer>
