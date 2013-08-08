@@ -2102,12 +2102,12 @@ data.mapsList = [{
     url: 'http://sige.dane.gov.co/atlasestadistico/Tomo_III_Economico/mapa/3.1_AreaTotalAprobadaConstruccion_2010_T.pdf'
 }, {
     cod: 'tome03map15',
-    title: 'Mapa 3.2.  Área aprobada para construcción de vivienda, según 77 municipios. 2010',
+    title: 'Mapa 3.2. Área aprobada para construcción de vivienda, según 77 municipios. 2010',
     tome: 'tome03',
     url: 'http://sige.dane.gov.co/atlasestadistico/Tomo_III_Economico/mapa/3.2_AreaTotalAprobadaConstruccionVivienda_2010.pdf'
 }, {
     cod: 'tome03map16',
-    title: 'Mapa 3.3.   Área total aprobada para construcción del área metropolitana de Bucaramanga, según municipio. 2010',
+    title: 'Mapa 3.3. Área total aprobada para construcción del área metropolitana de Bucaramanga, según municipio. 2010',
     tome: 'tome03',
     url: 'http://sige.dane.gov.co/atlasestadistico/Tomo_III_Economico/mapa/3.3_AreaTotalAprobadaConstruccion_2010_VentanaBucaramanga.pdf'
 }, {
