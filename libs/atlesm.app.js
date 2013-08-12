@@ -158,7 +158,7 @@ atles.showTomeContentsListView = function (hash) {
         var docroot = $(this).attr('data-tome-docroot') || 'nah';
         var docref = $(this).attr('data-tome-docref');
         $('li.leaf').hide();
-        $('li span').css('color','#000000');
+        $('li button').css('color','#000000');
         if (docroot !== 'nah') {
             if (docroot.indexOf('/')>0){
                 $('li.leaf.leaf-' + docroot.split('/')[0]).show();
