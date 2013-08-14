@@ -16,6 +16,10 @@ data.homeList = [{
     nom: 'Listado de mapas'
 }];
 data.tomesList = [{
+    cod: 'tm01itm01',
+    title: '1. Contexto del territorio y de la información estadística',
+    tome: 'tome01'
+}, {
     cod: 'tm01itm02',
     title: '1.1. El territorio colombiano',
     tome: 'tome01',
@@ -69,6 +73,10 @@ data.tomesList = [{
     tome: 'tome01',
     root: 'tm01itm01/tm01itm07',
     haveLink: true
+}, {
+    cod: 'tm01itm11',
+    title: '2. Distribución poblacional en el territorio y relaciones Urbano-Regionales',
+    tome: 'tome01'
 }, {
     cod: 'tm01itm12',
     title: '2.1. Referentes históricos del poblamiento en Colombia',
@@ -160,6 +168,10 @@ data.tomesList = [{
     root: 'tm01itm11/tm01itm23',
     haveLink: true
 }, {
+    cod: 'tm01itm27',
+    title: '3. Estructura y composición demográfica de la población',
+    tome: 'tome01'
+}, {
     cod: 'tm01itm28',
     title: '3.1. Estructura de la población por grupos de edad y sexo',
     tome: 'tome01',
@@ -250,6 +262,10 @@ data.tomesList = [{
     root: 'tm01itm27/tm01itm38',
     haveLink: true
 }, {
+    cod: 'tm01itm43',
+    title: '4. Dinámicas demográficas',
+    tome: 'tome01'
+}, {
     cod: 'tm01itm44',
     title: '4.1. Fecundidad',
     tome: 'tome01',
@@ -315,6 +331,10 @@ data.tomesList = [{
     tome: 'tome01',
     root: 'tm01itm43/tm01itm52',
     haveLink: true
+}, {
+    cod: 'tm02itm01',
+    title: '1. Condiciones de la vivienda',
+    tome: 'tome02'
 }, {
     cod: 'tm02itm02',
     title: '1.1. Distribución y densidad de las viviendas',
@@ -406,6 +426,10 @@ data.tomesList = [{
     root: 'tm02itm01/tm02itm11',
     haveLink: true
 }, {
+    cod: 'tm02itm17',
+    title: '2. Condiciones de los hogares',
+    tome: 'tome02'
+}, {
     cod: 'tm02itm18',
     title: '2.1. Tamaño del hogar',
     tome: 'tome02',
@@ -489,6 +513,10 @@ data.tomesList = [{
     tome: 'tome02',
     root: 'tm02itm17/tm02itm29',
     haveLink: true
+}, {
+    cod: 'tm02itm32',
+    title: '3. Condiciones de educación',
+    tome: 'tome02'
 }, {
     cod: 'tm02itm33',
     title: '3.1. Alfabetismo y analfabetismo',
@@ -610,6 +638,10 @@ data.tomesList = [{
     root: 'tm02itm32/tm02itm48',
     haveLink: true
 }, {
+    cod: 'tm02itm53',
+    title: '4. Condiciones de vida',
+    tome: 'tome02'
+}, {
     cod: 'tm02itm54',
     title: '4.1. Diferenciales territoriales  de las necesidades básicas',
     tome: 'tome02',
@@ -688,6 +720,10 @@ data.tomesList = [{
     root: 'tm02itm53/tm02itm63',
     haveLink: true
 }, {
+    cod: 'tm02itm67',
+    title: '5. Funcionamiento humano y discapacidad',
+    tome: 'tome02'
+}, {
     cod: 'tm02itm68',
     title: '5.1. La discapacidad',
     tome: 'tome02',
@@ -735,6 +771,10 @@ data.tomesList = [{
     tome: 'tome02',
     root: 'tm02itm67/tm02itm71',
     haveLink: true
+}, {
+    cod: 'tm02itm76',
+    title: '6. Nacimientos y defunciones',
+    tome: 'tome02'
 }, {
     cod: 'tm02itm77',
     title: '6.1 Los nacimientos en Colombia',
@@ -820,6 +860,10 @@ data.tomesList = [{
     root: 'tm02itm76/tm02itm83',
     haveLink: true
 }, {
+    cod: 'tm02itm91',
+    title: '7. Mercado laboral',
+    tome: 'tome02'
+}, {
     cod: 'tm02itm92',
     title: '7.1. Población en edad de trabajar (PET)',
     tome: 'tome02',
@@ -856,6 +900,10 @@ data.tomesList = [{
     root: 'tm02itm91',
     haveLink: true
 }, {
+    cod: 'tm03itm01',
+    title: '1. Sector industrial',
+    tome: 'tome03'
+}, {
     cod: 'tm03itm02',
     title: '1.1. Industria manufacturera',
     tome: 'tome03',
@@ -885,6 +933,10 @@ data.tomesList = [{
     tome: 'tome03',
     root: 'tm03itm01',
     haveLink: true
+}, {
+    cod: 'tm03itm07',
+    title: '2. Sector comercio exterior',
+    tome: 'tome03'
 }, {
     cod: 'tm03itm08',
     title: '2.1. Exportaciones',
@@ -946,6 +998,10 @@ data.tomesList = [{
     root: 'tm03itm07',
     haveLink: true
 }, {
+    cod: 'tm03itm18',
+    title: '3. Sector construcción',
+    tome: 'tome03'
+}, {
     cod: 'tm03itm19',
     title: '3.1. Licencias de construcción',
     tome: 'tome03',
@@ -1000,6 +1056,10 @@ data.tomesList = [{
     root: 'tm03itm18/tm03itm25',
     haveLink: true
 }, {
+    cod: 'tm03itm28',
+    title: '4. Sector transporte urbano',
+    tome: 'tome03'
+}, {
     cod: 'tm03itm29',
     title: '4.1. Vehículos en servicio',
     tome: 'tome03',
@@ -1011,6 +1071,10 @@ data.tomesList = [{
     tome: 'tome03',
     root: 'tm03itm28',
     haveLink: true
+}, {
+    cod: 'tm03itm31',
+    title: '5. Sector microestablecimientos',
+    tome: 'tome03'
 }, {
     cod: 'tm03itm32',
     title: '5.1. Número de microestablecimientos',
@@ -1042,6 +1106,10 @@ data.tomesList = [{
     root: 'tm03itm31/tm03itm34',
     haveLink: true
 }, {
+    cod: 'tm03itm37',
+    title: '6. Índices',
+    tome: 'tome03'
+}, {
     cod: 'tm03itm38',
     title: '6.1. Índice de precios al consumidor',
     tome: 'tome03',
@@ -1071,6 +1139,10 @@ data.tomesList = [{
     tome: 'tome03',
     root: 'tm03itm37',
     haveLink: true
+}, {
+    cod: 'tm03itm43',
+    title: '7. Cuentas departamentales',
+    tome: 'tome03'
 }, {
     cod: 'tm03itm44',
     title: '7.1. Producto interno bruto',
