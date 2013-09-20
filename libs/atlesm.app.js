@@ -178,32 +178,26 @@ atles.showTomeContentsListView = function (hash) {
     }
     
     $('body').on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
-        var docref = $(this).attr('data-tome-doc-link') || 'nah' ;
-        if(docref !== 'nah'){
+        var docref = $(this).attr('data-tome-doc-link') || 'nah';
+        if (docref !== 'nah') {
             var tome_ref = $(this).attr('data-tome-src');
-            atles.showTomeWebpageView(docref,tome_ref);
+            atles.showTomeWebpageView(docref, tome_ref);
         }
     }).on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
         e.preventDefault();
         atles.atHome = true;
         atles.prepareMainView();
+    }).on(atles.toggleClickEvent(), 'li.tome-itm button', function (e) {
+        if(atles.iscroll.moved){
+            e.preventDefault();
+        }
+        handleDoubleClickEvent(e);
+    
     });
-    if ($.device.mobile) {
-        var treeButtns = $('li.tome-itm button').hammer();
-        treeButtns.on('doubletap',function(e){
-            handleDoubleClickEvent(e);
-        });
-        /*$('li.tome-itm button').doubleTap(function (e) {
-            handleDoubleClickEvent(e);
-        });*/
-    } else {
-        $('body').on('dblclick', 'li.tome-itm button', function (e) {
-            handleDoubleClickEvent(e);
-        });
-    }
+    
     atles.handleDANEWebpageAccess();
-};
-atles.handlePdfDownload = function (btn,mapdocLink) {
+
+    atles.handlePdfDownload = function (btn,mapdocLink) {
     var mapdocref = btn.attr(mapdocLink) || 'nah';
     var havelink = false;
     if (mapdocref !== 'nah') {
