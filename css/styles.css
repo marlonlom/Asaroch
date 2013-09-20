@@ -210,6 +210,7 @@ span.map-img-footer {
 }
 span.map-img-title-header b, b.target-title {
     color: #B92859;
+    font-style:italic;
 }
 img.tomecontents-map-img {
     display:block;

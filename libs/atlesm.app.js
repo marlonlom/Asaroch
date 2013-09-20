@@ -223,8 +223,10 @@ atles.showTomeWebpageView = function (tome_content_ref, tome_ref) {
         if (btn === 1) {
             $('img.tomecontents-map-img').each(function(i){
                 $(this).attr('src', $(this).attr('data-src'));
+                $(this).on('load',function(e){
+                    atles.prepareCommonPageBehaviour();
+                });
             });
-            atles.prepareCommonPageBehaviour();
         }
     };
     $('.document-content').load('pages/' + tome_ref + '/' + tome_content_ref + '.html', function (data, status, xhr) {
