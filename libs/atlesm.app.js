@@ -107,7 +107,7 @@ atles.showMapdocsListView = function(){
     });
     atles.showTomeMapsListingView('tome01');
 };
-atles.showTomeMapsListingView = function(tome_key){
+atles.showTomeMapsListingView = function (tome_key){
     $('.tome-menutab').css('font-weight', 'normal').css('color','#1D1D1D').css('background','#dddddd');
     $('.tome-menutab[data-tomeref='+tome_key+']').css('font-weight', 'bold').css('color','#B6014C').css('background','#d1d1d1');
     
@@ -175,8 +175,8 @@ atles.showTomeContentsListView = function (hash) {
             $('button[data-tome-docref=' + docref + ']').css('color', '#B92859');
         }
         atles.prepareCommonPageBehaviour();
-    }
-    
+    };
+
     $('body').on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
         var docref = $(this).attr('data-tome-doc-link') || 'nah';
         if (docref !== 'nah') {
@@ -188,31 +188,31 @@ atles.showTomeContentsListView = function (hash) {
         atles.atHome = true;
         atles.prepareMainView();
     }).on(atles.toggleClickEvent(), 'li.tome-itm button', function (e) {
-        if(atles.iscroll.moved){
+        if (atles.iscroll.moved) {
             e.preventDefault();
         }
         handleDoubleClickEvent(e);
-    
     });
-    
+
     atles.handleDANEWebpageAccess();
 
-    atles.handlePdfDownload = function (btn,mapdocLink) {
-    var mapdocref = btn.attr(mapdocLink) || 'nah';
-    var havelink = false;
-    if (mapdocref !== 'nah') {
-        var mapdocs = $.grep(data.mapsList, function (item, index) {
-            return item['cod'] === mapdocref;
-        });
-        havelink = mapdocs !== null && mapdocs.length > 0;
-        if (havelink) {
-            window.open(mapdocs[0].url, '_system');
+    atles.handlePdfDownload = function (btn, mapdocLink) {
+        var mapdocref = btn.attr(mapdocLink) || 'nah';
+        var havelink = false;
+        if (mapdocref !== 'nah') {
+            var mapdocs = $.grep(data.mapsList, function (item, index) {
+                return item['cod'] === mapdocref;
+            });
+            havelink = mapdocs !== null && mapdocs.length > 0;
+            if (havelink) {
+                window.open(mapdocs[0].url, '_system');
+            } else {
+                atles.showAlert('no hay archivo de mapa', 'descargar mapa');
+            }
         } else {
             atles.showAlert('no hay archivo de mapa', 'descargar mapa');
         }
-    } else {
-        atles.showAlert('no hay archivo de mapa', 'descargar mapa');
-    }
+    };
 };
 atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
     $('body').off(atles.toggleClickEvent());
