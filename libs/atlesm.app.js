@@ -2,6 +2,7 @@ var atles = {
     templates: {},
     atHome: true,
     googleMapsState: "",
+    currView: 'home',
     iscroll: null
 };
 atles.initialize = function () {
@@ -50,6 +51,7 @@ atles.prepareCommonPageBehaviour = function () {
     atles.iscroll = new iScroll("wrapper");
 };
 atles.prepareMainView = function () {
+    atles.currView = 'home';
     $('body').off(atles.toggleClickEvent());
 
     $('body').html(this.templates.home({
@@ -76,6 +78,7 @@ atles.prepareMainView = function () {
 atles.showWelcomeNoteView = function(){
     $('body').off(atles.toggleClickEvent());
     atles.atHome = false;
+    atles.currView = 'welcome';
     $('body').html(this.templates.singleDocs());
     $('.document-content').load('pages/welcome.html',function(data, status, xhr){ 
         atles.prepareCommonPageBehaviour();
@@ -93,6 +96,7 @@ atles.showWelcomeNoteView = function(){
 atles.showMapdocsListView = function(){
     $('body').off(atles.toggleClickEvent());
     atles.atHome = false;
+    atles.currView = 'mapslist';
     $('body').html(this.templates.mapdocsList());
     $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
         e.preventDefault();
@@ -128,7 +132,7 @@ atles.showTomeMapsListingView = function(tome_key){
 atles.showTomeContentsListView = function (hash) {
     $('body').off(atles.toggleClickEvent());
     atles.atHome = false;
-
+    atles.currView = 'tome_contents';
     var tomeContents = $.grep(data.tomesList, function (item, index) {
         return item['tome'] === hash;
     });
@@ -216,6 +220,7 @@ atles.handlePdfDownload = function (btn,mapdocLink) {
 atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
     $('body').off(atles.toggleClickEvent());
     atles.atHome = false;
+    atles.currView = 'tome_content_tome_content_ref';
     $('body').html(this.templates.singleDocs());
     $('.document-content').load('pages/'+tome_ref+'/'+tome_content_ref+'.html',function(data, status, xhr){ 
         $('img.tomecontents-map-img').off('load').on('load',function(){

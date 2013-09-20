@@ -194,25 +194,24 @@ li.tome-mapdoc-itm span {
     display: block;
     color:#000000;
 }
-span.map-img-title-header{
+span.map-img-title-header {
     font-size:10px;
     margin-top:10px;
 }
-span.map-img-section-header{
+span.map-img-section-header {
     font-weight:bold;
     font-size:11px;
     margin-top:15px;
-    
 }
 span.map-img-footer {
     font-size: 7px;
     margin-bottom: 10px;
     width: 95%;
 }
-span.map-img-title-header b, b.target-title{
+span.map-img-title-header b, b.target-title {
     color: #B92859;
 }
-img.tomecontents-map-img{
+img.tomecontents-map-img {
     display:block;
     width:95%;
     padding-bottom:5px
@@ -231,13 +230,13 @@ button.download-map-btn {
     display:block;
     width:95%;
 }
-button.download-map-btn img{
+button.download-map-btn img {
     float:left;
 }
-button.download-map-btn span{
+button.download-map-btn span {
     float:right;
 }
-button.tome-content-btn{
+button.tome-content-btn {
     background: none repeat scroll 0 0 transparent;
     border: medium none;
     display: block;
@@ -251,4 +250,13 @@ button.tome-content-btn{
 }
 img.img-savemap, img.img-viewdoc {
     float:right;
+}
+li.tome-itm-level-0 button{
+    padding-left: 0px !important
+}
+li.tome-itm-level-1 button{
+    padding-left: 5px !important
+}
+li.tome-itm-level-2 button{
+    padding-left: 10px !important
 }

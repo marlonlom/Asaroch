@@ -45,10 +45,14 @@
                    atles.prepareMainView(); 
                 }
             }
-        
+            
             function onBackKeyDown() { 
-                if (navigator.notification) {
-                    navigator.notification.confirm('Salir de la aplicación?', closeAppConfirm, 'Saliendo', 'Salir,Cancelar'); 
+                if (atles.currView === 'home'){ 
+                    if (navigator.notification) {
+                        navigator.notification.confirm('Salir de la aplicación?', closeAppConfirm, 'Saliendo', 'Salir,Cancelar'); 
+                    } 
+                }else{
+                    document.querySelector('.back-prev-icon').click();
                 }
             }
             
@@ -103,7 +107,7 @@
                             <input id="tome_key" name="tome_key" value="{{tomekey}}" type="hidden">
                         </li>
                         {{#each list}}
-                        <li data-tome-ref="{{cod}}" class="menu-li tome-itm {{#if root}}leaf leaf-{{root}}{{/if}}">
+                        <li data-tome-ref="{{cod}}" class="menu-li tome-itm tome-itm-level-{{level}} {{#if root}}leaf leaf-{{root}}{{/if}}">
                             <button class="tome-content-btn" data-tome-docref="{{cod}}"{{#if root}} data-tome-docroot="{{root}}"{{/if}}>
                                 {{title}}
                             </button>
