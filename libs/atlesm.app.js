@@ -20,7 +20,7 @@ atles.toggleClickEvent = function () {
     return $.device.mobile ? 'touchend' : 'click';
 };
 atles.toggleDoubleClickEvent = function () {
-    return $.device.mobile ? 'doubleTap' : 'dblclick';
+    return $.device.mobile ? 'doubletap' : 'dblclick';
 };
 atles.showAlert = function (message, title) {
     if (navigator.notification) {
