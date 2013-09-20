@@ -189,9 +189,13 @@ atles.showTomeContentsListView = function (hash) {
         atles.prepareMainView();
     });
     if ($.device.mobile) {
-        $('li.tome-itm button').doubleTap(function (e) {
+        var treeButtns = $('li.tome-itm button').hammer();
+        treeButtns.on('doubletap',function(e){
             handleDoubleClickEvent(e);
         });
+        /*$('li.tome-itm button').doubleTap(function (e) {
+            handleDoubleClickEvent(e);
+        });*/
     } else {
         $('body').on('dblclick', 'li.tome-itm button', function (e) {
             handleDoubleClickEvent(e);
