@@ -83,11 +83,7 @@ atles.showWelcomeNoteView = function(){
     $('.document-content').load('pages/welcome.html',function(data, status, xhr){ 
         atles.prepareCommonPageBehaviour();
     });
-    $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
-        e.preventDefault();
-        atles.atHome = true;
-        atles.prepareMainView();
-    }).on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
+    $('body').on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
         e.preventDefault();
         atles.atHome = true;
         atles.prepareMainView();
@@ -98,11 +94,7 @@ atles.showMapdocsListView = function(){
     atles.atHome = false;
     atles.currView = 'mapslist';
     $('body').html(this.templates.mapdocsList());
-    $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
-        e.preventDefault();
-        atles.atHome = true;
-        atles.prepareMainView();
-    }).on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
+    $('body').on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
         e.preventDefault();
         atles.atHome = true;
         atles.prepareMainView();
@@ -185,11 +177,7 @@ atles.showTomeContentsListView = function (hash) {
         atles.prepareCommonPageBehaviour();
     }
     
-    $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
-        e.preventDefault();
-        atles.atHome = true;
-        atles.prepareMainView();        
-    }).on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
+    $('body').on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
         var docref = $(this).attr('data-tome-doc-link') || 'nah' ;
         if(docref !== 'nah'){
             var tome_ref = $(this).attr('data-tome-src');
