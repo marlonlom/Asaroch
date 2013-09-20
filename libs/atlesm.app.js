@@ -222,13 +222,13 @@ atles.showTomeWebpageView = function (tome_content_ref, tome_ref) {
     var showImagesConfirm = function (btn) {
         if (btn === 1) {
             $('img.tomecontents-map-img').each(function(i){
-                $(this).attr('src', $(this).attr('data-src') + '?' + Math.random());
+                $(this).attr('src', $(this).attr('data-src'));
             });
             atles.prepareCommonPageBehaviour();
         }
     };
     $('.document-content').load('pages/' + tome_ref + '/' + tome_content_ref + '.html', function (data, status, xhr) {
-        if (atles.isOnline === true) {
+        if (atles.isOffline() === false) {
             navigator.notification.confirm('Se mostrarán las imágenes del documento.?', showImagesConfirm, 'Mostrar Imágenes', 'Continuar,Cancelar');
         }
         atles.prepareCommonPageBehaviour();
