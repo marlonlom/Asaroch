@@ -19,9 +19,6 @@ atles.isOffline = function () {
 atles.toggleClickEvent = function () {
     return $.device.mobile ? 'touchend' : 'click';
 };
-atles.toggleDoubleClickEvent = function () {
-    return $.device.mobile ? 'doubletap' : 'dblclick';
-};
 atles.showAlert = function (message, title) {
     if (navigator.notification) {
         navigator.notification.alert(message, null, title, 'OK');
@@ -156,40 +153,42 @@ atles.showTomeContentsListView = function (hash) {
 
     atles.prepareCommonPageBehaviour();
 
-    $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
-        e.preventDefault();
-        atles.atHome = true;
-        atles.prepareMainView();
-    }).on(atles.toggleDoubleClickEvent(), 'li.tome-itm button', function (e) {
+    var handleDoubleClickEvent = function (e) {
         e.preventDefault();
         var docroot = $(this).attr('data-tome-docroot') || 'nah';
         var docref = $(this).attr('data-tome-docref');
         $('li.leaf').hide();
-        $('li button').css('color','#000000');
+        $('li button').css('color', '#000000');
         if (docroot !== 'nah') {
-            if (docroot.indexOf('/')>0){
+            if (docroot.indexOf('/') > 0) {
                 $('li.leaf.leaf-' + docroot.split('/')[0]).show();
-                $('button[data-tome-docref='+docroot.split('/')[0]+']').css('color','#B92859');
+                $('button[data-tome-docref=' + docroot.split('/')[0] + ']').css('color', '#B92859');
                 $('li.leaf').filter(function (index, item) {
                     var claz = $(this).attr('class');
                     return claz.indexOf(docroot) >= 0;
                 }).show();
-                $('button[data-tome-docref='+docroot.split('/')[1]+']').css('color','#B92859');
-            }else{
+                $('button[data-tome-docref=' + docroot.split('/')[1] + ']').css('color', '#B92859');
+            } else {
                 var otkn = docroot.concat('/').concat(docref);
                 $('li.leaf.leaf-' + docroot).show();
-                $('button[data-tome-docref='+docroot+']').css('color','#B92859');
+                $('button[data-tome-docref=' + docroot + ']').css('color', '#B92859');
                 $('li.leaf').filter(function (index, item) {
                     var claz = $(this).attr('class');
                     return claz.indexOf(otkn) >= 0;
                 }).show();
-                $('button[data-tome-docref='+docref+']').css('color','#B92859');
+                $('button[data-tome-docref=' + docref + ']').css('color', '#B92859');
             }
         } else {
             $('li.leaf.leaf-' + docref).show();
-            $('button[data-tome-docref='+docref+']').css('color','#B92859');
+            $('button[data-tome-docref=' + docref + ']').css('color', '#B92859');
         }
         atles.prepareCommonPageBehaviour();
+    }
+    
+    $('body').on(atles.toggleClickEvent(), '.back-home-icon', function (e) {
+        e.preventDefault();
+        atles.atHome = true;
+        atles.prepareMainView();        
     }).on(atles.toggleClickEvent(), 'li.tome-itm img.img-viewdoc', function (e) {
         var docref = $(this).attr('data-tome-doc-link') || 'nah' ;
         if(docref !== 'nah'){
@@ -201,6 +200,15 @@ atles.showTomeContentsListView = function (hash) {
         atles.atHome = true;
         atles.prepareMainView();
     });
+    if ($.device.mobile) {
+        $('li.tome-itm button').doubleTap(function (e) {
+            handleDoubleClickEvent(e);
+        });
+    } else {
+        $('body').on('dblclick', 'li.tome-itm button', function (e) {
+            handleDoubleClickEvent(e);
+        });
+    }
     atles.handleDANEWebpageAccess();
 };
 atles.handlePdfDownload = function (btn,mapdocLink) {
