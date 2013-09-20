@@ -20,6 +20,10 @@
         <script type="text/javascript" charset="utf-8" src="data/atlesm.data.js"></script>
         <script type="text/javascript" charset="utf-8" src="libs/atlesm.app.js"></script>
         <script>
+            if (!$) {
+                $ = Zepto;
+            };
+            
             function onBodyLoad() {
                 document.addEventListener("deviceready", onDeviceReady, false);
             }
@@ -52,14 +56,9 @@
                         navigator.notification.confirm('Salir de la aplicación?', closeAppConfirm, 'Saliendo', 'Salir,Cancelar'); 
                     } 
                 }else{
-                    atles.showAlert('ejecutar btn atras','backbutton');
-                    document.querySelector('.back-prev-icon').click();
+                    $('.back-prev-icon').trigger('click')
                 }
             }
-            
-            if (!$) {
-                $ = Zepto;
-            };
             
             $(function($) {
                 atles.initialize();
