@@ -107,6 +107,23 @@ atles.showMapdocsListView = function(){
     });
     atles.showTomeMapsListingView('tome01');
 };
+atles.handlePdfDownload = function (btn, mapdocLink) {
+    var mapdocref = btn.attr(mapdocLink) || 'nah';
+    var havelink = false;
+    if (mapdocref !== 'nah') {
+        var mapdocs = $.grep(data.mapsList, function (item, index) {
+            return item['cod'] === mapdocref;
+        });
+        havelink = mapdocs !== null && mapdocs.length > 0;
+        if (havelink) {
+            window.open(mapdocs[0].url, '_system');
+        } else {
+            atles.showAlert('no hay archivo de mapa', 'descargar mapa');
+        }
+    } else {
+        atles.showAlert('no hay archivo de mapa', 'descargar mapa');
+    }
+};
 atles.showTomeMapsListingView = function (tome_key){
     $('.tome-menutab').css('font-weight', 'normal').css('color','#1D1D1D').css('background','#dddddd');
     $('.tome-menutab[data-tomeref='+tome_key+']').css('font-weight', 'bold').css('color','#B6014C').css('background','#d1d1d1');
@@ -117,8 +134,10 @@ atles.showTomeMapsListingView = function (tome_key){
     $('div.maplist-tabcontents').html(this.templates.mapdocsItems({list:tomeMaps}));    
     atles.prepareCommonPageBehaviour();
     $('body').on(atles.toggleClickEvent(), '.img-savemap', function (e) {
-        e.preventDefault();
-        atles.handlePdfDownload($(this),'data-tome-mapcode');
+        if (!atles.iscroll.moved) {
+            e.preventDefault();
+            atles.handlePdfDownload($(this),'data-tome-mapcode');
+        }
     });
 };
 atles.showTomeContentsListView = function (hash) {
@@ -145,10 +164,9 @@ atles.showTomeContentsListView = function (hash) {
 
     atles.prepareCommonPageBehaviour();
 
-    var handleDoubleClickEvent = function (e) {
-        e.preventDefault();
-        var docroot = $(this).attr('data-tome-docroot') || 'nah';
-        var docref = $(this).attr('data-tome-docref');
+    var handleDoubleClickEvent = function (self) {
+        var docroot = self.attr('data-tome-docroot') || 'nah';
+        var docref = self.attr('data-tome-docref');
         $('li.leaf').hide();
         $('li button').css('color', '#000000');
         if (docroot !== 'nah') {
@@ -187,32 +205,14 @@ atles.showTomeContentsListView = function (hash) {
         e.preventDefault();
         atles.atHome = true;
         atles.prepareMainView();
-    }).on(atles.toggleClickEvent(), 'li.tome-itm button', function (e) {
-        if (atles.iscroll.moved) {
+    }).on(atles.toggleClickEvent(), 'li.tome-itm button.tome-content-btn', function (e) {
+        if (!atles.iscroll.moved) {
             e.preventDefault();
+            handleDoubleClickEvent($(this));
         }
-        handleDoubleClickEvent(e);
     });
 
     atles.handleDANEWebpageAccess();
-
-    atles.handlePdfDownload = function (btn, mapdocLink) {
-        var mapdocref = btn.attr(mapdocLink) || 'nah';
-        var havelink = false;
-        if (mapdocref !== 'nah') {
-            var mapdocs = $.grep(data.mapsList, function (item, index) {
-                return item['cod'] === mapdocref;
-            });
-            havelink = mapdocs !== null && mapdocs.length > 0;
-            if (havelink) {
-                window.open(mapdocs[0].url, '_system');
-            } else {
-                atles.showAlert('no hay archivo de mapa', 'descargar mapa');
-            }
-        } else {
-            atles.showAlert('no hay archivo de mapa', 'descargar mapa');
-        }
-    };
 };
 atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
     $('body').off(atles.toggleClickEvent());
@@ -233,7 +233,9 @@ atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
         atles.atHome = false;
         atles.showTomeContentsListView(tome_ref);
     }).on(atles.toggleClickEvent(), '.download-map-btn', function (e) {
-        e.preventDefault();
-        atles.handlePdfDownload($(this),'data-mapdoc-ref');
+        if (!atles.iscroll.moved) {
+            e.preventDefault();
+            atles.handlePdfDownload($(this),'data-mapdoc-ref');
+        }
     });
 };
