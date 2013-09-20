@@ -54,9 +54,7 @@
                 if (atles.currView === 'home'){ 
                     if (navigator.notification) {
                         navigator.notification.confirm('Salir de la aplicación?', closeAppConfirm, 'Saliendo', 'Salir,Cancelar'); 
-                    } 
-                }else{
-                    $('.back-prev-icon').trigger('click')
+                    }
                 }
             }
             
@@ -103,7 +101,7 @@
                 <div id="scroller">
                     <ul class='home-list'>
                         <li class="menu-li home-li-tip">
-                            <span>{{tomeName}}</span>
+                            <span class="tome-title">{{tomeName}}</span>
                             <input id="tome_key" name="tome_key" value="{{tomekey}}" type="hidden">
                         </li>
                         {{#each list}}

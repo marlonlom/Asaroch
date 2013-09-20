@@ -151,7 +151,7 @@ li.tome-itm span {
     margin:2px;
 }
 div.welcome_wrapper {
-    font-size: 11px;
+    font-size: 12px;
     padding: 5px 5px 5px 10px;
     width: 92%;
 }
@@ -241,7 +241,7 @@ button.tome-content-btn {
     border: medium none;
     display: block;
     float: left;
-    font-size: 11px;
+    font-size: 12px;
     margin: 0;
     min-height: 24px;
     padding: 0 0 0 5px;
@@ -259,4 +259,15 @@ li.tome-itm-level-1 button{
 }
 li.tome-itm-level-2 button{
     padding-left: 10px !important
+}
+span.tome-title {
+    display: block;
+    width: 95%;
+}
+b.tome01-title, b.tome02-title, b.tome03-title,span.tome-title {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    font-weight:bold;
+    text-align: right;
+    text-transform: uppercase;
 }

@@ -19,6 +19,9 @@ atles.isOffline = function () {
 atles.toggleClickEvent = function () {
     return $.device.mobile ? 'touchend' : 'click';
 };
+atles.toggleDoubleClickEvent = function () {
+    return $.device.mobile ? 'doubleTap' : 'dblclick';
+};
 atles.showAlert = function (message, title) {
     if (navigator.notification) {
         navigator.notification.alert(message, null, title, 'OK');
@@ -157,7 +160,7 @@ atles.showTomeContentsListView = function (hash) {
         e.preventDefault();
         atles.atHome = true;
         atles.prepareMainView();
-    }).on(atles.toggleClickEvent(), 'li.tome-itm button', function (e) {
+    }).on(atles.toggleDoubleClickEvent(), 'li.tome-itm button', function (e) {
         e.preventDefault();
         var docroot = $(this).attr('data-tome-docroot') || 'nah';
         var docref = $(this).attr('data-tome-docref');
