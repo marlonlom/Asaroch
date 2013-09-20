@@ -214,18 +214,23 @@ atles.showTomeContentsListView = function (hash) {
 
     atles.handleDANEWebpageAccess();
 };
-atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
+atles.showTomeWebpageView = function (tome_content_ref, tome_ref) {
     $('body').off(atles.toggleClickEvent());
     atles.atHome = false;
     atles.currView = 'tome_content_tome_content_ref';
     $('body').html(this.templates.singleDocs());
-    $('.document-content').load('pages/'+tome_ref+'/'+tome_content_ref+'.html',function(data, status, xhr){ 
-        $('img.tomecontents-map-img').off('load').on('load',function(){
-            if($(this).attr('complete') === false){
-                $(this).attr('src', $(this).attr('src')+'?'+Math.random());
-            }
+    var showImagesConfirm = function (btn) {
+        if (btn === 1) {
+            $('img.tomecontents-map-img').each(function(i){
+                $(this).attr('src', $(this).attr('data-src') + '?' + Math.random());
+            });
             atles.prepareCommonPageBehaviour();
-        });
+        }
+    };
+    $('.document-content').load('pages/' + tome_ref + '/' + tome_content_ref + '.html', function (data, status, xhr) {
+        if (atles.isOnline === true) {
+            navigator.notification.confirm('Se mostrarán las imágenes del documento.?', showImagesConfirm, 'Mostrar Imágenes', 'Continuar,Cancelar');
+        }
         atles.prepareCommonPageBehaviour();
     });
     $('body').on(atles.toggleClickEvent(), '.back-prev-icon', function (e) {
@@ -235,7 +240,7 @@ atles.showTomeWebpageView = function(tome_content_ref,tome_ref){
     }).on(atles.toggleClickEvent(), '.download-map-btn', function (e) {
         if (!atles.iscroll.moved) {
             e.preventDefault();
-            atles.handlePdfDownload($(this),'data-mapdoc-ref');
+            atles.handlePdfDownload($(this), 'data-mapdoc-ref');
         }
     });
 };

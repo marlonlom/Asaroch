@@ -40,6 +40,7 @@
                 }, false);
                 document.addEventListener("offline", function(e) {
                     atles.isOnline = false;
+                    atles.showAlert('No se mostrarán las imágenes ni las tablas en los contenidos.', 'No hay conexión a internet');
                 }, false);
             }
         
